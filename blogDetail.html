@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrowScooter - Blog Post</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="images\growwpark_logo.jpg">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #000000;
+      --secondary: #00FF00;
+      --text: #000000;
+      --text-light: #333333;
+      --bg: #FFFFFF;
+      --bg-light: #F0F0F0;
+      --border: #CCCCCC;
+      --shadow: 0 4px 12px rgba(0,255,0,0.1);
+      --shadow-lg: 0 20px 40px rgba(0,255,0,0.15);
+      --transition: all 0.4s ease;
+      --footer-bg: #FFFFFF;
+      --footer-text: #000000;
+    }
+    .dark-mode {
+      --primary: #00FF00;
+      --secondary: #00FF00;
+      --text: #FFFFFF;
+      --text-light: #CCCCCC;
+      --bg: #000000;
+      --bg-light: #111111;
+      --border: #333333;
+      --footer-bg: #000000;
+      --footer-text: #FFFFFF;
+    }
+    body {
+      font-family: 'Poppins', sans-serif; 
+      color: var(--text); 
+      background: var(--bg);
+      line-height: 1.6; 
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column;
+      transition: 0.3s;
+    }
+    h1, h2, h3, h4, h5, h6, .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    /* Header - Exact match from Home */
+    header {
+      background: var(--bg); 
+      box-shadow: var(--shadow); 
+      position: sticky; 
+      top: 0;
+      z-index: 1000; 
+      border-bottom: 3px solid var(--secondary);
+    }
+    .navbar {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      padding: 1rem 2rem; 
+      max-width: 1400px; 
+      margin: 0 auto;
+    }
+    .logo { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      text-decoration: none; 
+    }
+    .logo i { color: var(--secondary); font-size: 28px; }
+    .logo-text {
+      font-size: 25px; 
+      font-weight: 800;
+      background: linear-gradient(45deg, #00FF00, #00FF00);
+      -webkit-background-clip: text; 
+      background-clip: text; 
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links { 
+      display: flex; 
+      list-style: none; 
+      gap: 0.75rem; 
+    }
+    .nav-links a {
+      text-decoration: none; 
+      color: var(--text); 
+      font-weight: 600;
+      padding: 8px 16px; 
+      border-radius: 8px; 
+      transition: var(--transition); 
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--secondary); 
+      background: rgba(0,255,0,0.08);
+    }
+    .dropdown { position: relative; }
+    .dropdown-menu {
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      background: var(--bg);
+      list-style: none; 
+      padding: 15px 0; 
+      min-width: 200px; 
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg); 
+      border: 1px solid var(--border); 
+      display: none; 
+      z-index: 1000;
+    }
+    .dropdown-menu a {
+      display: block; 
+      padding: 12px 20px; 
+      color: var(--text); 
+      text-decoration: none;
+    }
+    .dropdown-menu a:hover {
+      background: var(--primary); 
+      color: white; 
+      padding-left: 30px;
+    }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .controls { 
+      display: flex; 
+      gap: 10px; 
+      align-items: center; 
+    }
+    .control-btn {
+      background: transparent; 
+      border: none; 
+      font-size: 18px; 
+      padding: 8px;
+      cursor: pointer; 
+      color: var(--text); 
+      transition: 0.3s;
+    }
+    .control-btn:hover { 
+      color: var(--secondary); 
+      transform: scale(1.1); 
+    }
+    .hamburger {
+      display: none; 
+      background: none; 
+      border: 2px solid var(--border);
+      border-radius: 8px; 
+      font-size: 20px; 
+      cursor: pointer; 
+      padding: 8px 12px; 
+      color: var(--text);
+    }
+    .mobile-nav-menu {
+      position: fixed; 
+      top: 0; 
+      right: -100%; 
+      width: 320px; 
+      height: 100vh;
+      background: var(--bg-light); 
+      z-index: 999; 
+      transition: right 0.4s;
+      padding: 90px 2rem 2rem; 
+      border-left: 3px solid var(--secondary); 
+      overflow-y: auto;
+    }
+    .mobile-nav-menu.active { right: 0; }
+    .mobile-nav-menu .nav-links {
+      display: flex !important; 
+      flex-direction: column !important; 
+      gap: 0.5rem !important;
+      padding-bottom: 30px !important; 
+      list-style: none !important;
+    }
+    .mobile-nav-menu .nav-links a {
+      display: block !important; 
+      padding: 15px 20px !important;
+      border: 2px solid var(--border) !important; 
+      border-radius: 8px !important;
+      background: var(--bg) !important; 
+      text-decoration: none !important;
+      color: var(--text) !important; 
+      font-weight: 600 !important; 
+      width: 100% !important;
+    }
+    .mobile-nav-menu .nav-links a:hover {
+      background: var(--primary) !important; 
+      color: var(--primary) !important;
+      border-color: var(--primary) !important;
+    }
+    .mobile-nav-menu .nav-links .home-sub-item {
+      padding-left: 40px !important; 
+      margin-top: -5px !important; 
+      margin-bottom: 5px !important;
+      border-color: var(--border) !important; 
+      background: var(--bg-light) !important; 
+      font-size: 0.9rem !important;
+    }
+    .mobile-overlay {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      background: rgba(0,0,0,0.5); 
+      z-index: 998; 
+      display: none;
+    }
+    .mobile-overlay.active { display: block; }
+    .mobile-controls {
+      margin-top: 2rem; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 1rem;
+    }
+    .mobile-controls .control-btn {
+      width: 100%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      gap: 10px; 
+      border: 2px solid var(--border); 
+      border-radius: 8px;
+      padding: 12px; 
+      background: var(--bg);
+    }
+    .nav-btn { 
+      padding: 8px 18px !important; 
+      border-radius: 50px !important; 
+      font-weight: 600; 
+    }
+    .login-btn { 
+      border: 2px solid var(--secondary); 
+      color: var(--secondary) !important; 
+    }
+    .login-btn:hover { 
+      background: #00FF00; 
+      color: #000000 !important; 
+    }
+    .signup-btn { 
+      background: var(--secondary); 
+      color: #000000 !important; 
+    }
+    .signup-btn:hover { background: #00CC00; }
+
+    /* Hide Theme & RTL in Mobile Top Navbar */
+    @media (max-width: 1280px) {
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: none !important; }
+      .hamburger { display: block !important; }
+      .navbar .controls #themeToggle,
+      .navbar .controls #rtlToggle {
+        display: none !important;
+      }
+    }
+    @media (min-width: 1281px) {
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: flex !important; }
+      .hamburger { display: none !important; }
+    }
+
+    /* Hero Banner - Matching Home style */
+    .blog-hero {
+      position: relative;
+      height: 95vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .blog-hero img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .blog-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2;
+    }
+    .blog-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      padding: 0 20px;
+      color: white;
+    }
+    .blog-hero-content h1 {
+      font-size: 4rem;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .blog-hero-content h1 span { color: #00FF00; }
+    .blog-hero-content p {
+      font-size: 1.2rem;
+      color: #dddddd;
+      margin-bottom: 30px;
+    }
+    .blog-meta {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      color: #dddddd;
+      font-size: 1rem;
+    }
+    .blog-meta i {
+      color: var(--secondary);
+      margin-right: 8px;
+    }
+
+    /* Blog Post Content */
+    .blog-post {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 5%;
+    }
+    .post-content {
+      background: var(--bg);
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    .post-lead {
+      font-size: 1.25rem;
+      color: var(--text);
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 2px solid var(--secondary);
+      line-height: 1.8;
+    }
+    .post-content h2 {
+      font-size: 2rem;
+      margin: 40px 0 20px;
+    }
+    .post-content h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--secondary);
+    }
+    .post-content p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .post-content ul {
+      margin: 20px 0 30px 30px;
+      color: var(--text-light);
+    }
+    .post-content li {
+      margin-bottom: 10px;
+    }
+    .post-content li strong {
+      color: var(--secondary);
+    }
+
+    /* Tip Box */
+    .tip-box {
+      background: rgba(0, 255, 0, 0.05);
+      border-left: 4px solid var(--secondary);
+      padding: 30px;
+      margin: 40px 0;
+      border-radius: 10px;
+    }
+    .tip-box h4 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Quote */
+    .post-quote {
+      margin: 40px 0;
+      padding: 30px;
+      background: var(--bg-light);
+      border-radius: 15px;
+      font-style: italic;
+    }
+    .post-quote i {
+      color: var(--secondary);
+      font-size: 2rem;
+      opacity: 0.3;
+      margin-bottom: 10px;
+    }
+    .post-quote cite {
+      display: block;
+      margin-top: 15px;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    /* Author Box */
+    .author-box {
+      display: flex;
+      gap: 30px;
+      background: var(--bg-light);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+      border: 1px solid var(--border);
+    }
+    .author-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--secondary);
+    }
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .author-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    .author-bio {
+      color: var(--text-light);
+      margin-bottom: 15px;
+    }
+    .author-social {
+      display: flex;
+      gap: 10px;
+    }
+    .author-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: var(--transition);
+    }
+    .author-social a:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    /* Tags */
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 30px 0;
+    }
+    .tag {
+      padding: 6px 14px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .tag:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    /* Share */
+    .post-share {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+      margin: 30px 0;
+    }
+    .share-icons {
+      display: flex;
+      gap: 10px;
+    }
+    .share-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: var(--transition);
+    }
+    .share-icon:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    /* Comments */
+    .comments-section {
+      margin-top: 50px;
+    }
+    .comments-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--secondary);
+    }
+    .comment {
+      display: flex;
+      gap: 20px;
+      padding: 25px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+    .comment-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--secondary);
+    }
+    .comment-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .comment-author {
+      font-weight: 600;
+    }
+    .comment-date {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    .comment-text {
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+    .comment-reply {
+      color: var(--secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Comment Form */
+    .comment-form {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      margin-top: 40px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+      background: var(--bg);
+      color: var(--text);
+      transition: var(--transition);
+    }
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--secondary);
+      outline: none;
+    }
+    .submit-btn {
+      padding: 14px 30px;
+      background: var(--secondary);
+      border: none;
+      border-radius: 50px;
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .submit-btn:hover {
+      background: #00cc00;
+      transform: translateY(-2px);
+    }
+
+    /* Related Posts - FIXED FOR 4 CARDS */
+    .related-posts {
+      margin: 60px 0;
+    }
+    .related-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--secondary);
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 cards on desktop */
+      gap: 25px;
+    }
+    .related-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .related-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+    }
+    .related-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .related-content {
+      padding: 20px;
+    }
+    .related-content h4 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .related-content h4 a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .related-content h4 a:hover {
+      color: var(--secondary);
+    }
+
+    /* Back Button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 30px;
+      background: transparent;
+      border: 2px solid var(--secondary);
+      border-radius: 50px;
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      margin: 40px 0;
+    }
+    .back-btn:hover {
+      background: var(--secondary);
+      color: #000;
+    }
+
+    /* Footer - Exact match from Home */
+    .site-footer {
+      background: var(--footer-bg); 
+      color: var(--footer-text);
+      padding: 70px 0 40px; 
+      border-top: 4px solid #00FF00; 
+      margin-top: auto;
+    }
+    .dark-mode .site-footer { background: #000000 !important; }
+    .footer-content { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
+    .footer-top {
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 50px; 
+      margin-bottom: 50px;
+    }
+    .footer-column h3 {
+      color: #00FF00; 
+      font-size: 1rem; 
+      font-weight: 700; 
+      margin-bottom: 25px;
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      padding-bottom: 12px;
+      border-bottom: 2px solid #00FF00;
+    }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: 12px; }
+    .footer-column a {
+      color: var(--footer-text); 
+      text-decoration: none; 
+      font-size: 0.95rem; 
+      transition: var(--transition);
+    }
+    .footer-column a:hover { color: #00FF00; transform: translateX(8px); }
+    .footer-middle {
+      padding: 35px 0; 
+      border-top: 1px solid #00FF00;
+      border-bottom: 1px solid #00FF00; 
+      margin-bottom: 35px;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+    .footer-links { display: flex; gap: 35px; }
+    .footer-links a { color: var(--footer-text); text-decoration: none; font-size: 0.95rem; }
+    .footer-links a:hover { color: #00FF00; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .copyright { color: var(--footer-text); font-size: 0.9rem; opacity: 0.8; }
+
+    /* RTL */
+    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+    [dir="rtl"] .footer-column a:hover { transform: translateX(-8px); }
+    [dir="rtl"] .mobile-nav-menu {
+      left: -100%; 
+      right: auto; 
+      border-left: none; 
+      border-right: 3px solid var(--secondary);
+    }
+    [dir="rtl"] .mobile-nav-menu.active { left: 0; }
+    [dir="rtl"] .home-sub-item { padding-left: 20px !important; padding-right: 40px !important; }
+    [dir="rtl"] .back-btn i { transform: rotate(180deg); }
+
+    /* Responsive - FIXED for related cards */
+    @media (max-width: 1000px) {
+      .related-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards on tablet */
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .footer-top { grid-template-columns: repeat(2, 1fr); }
+      .footer-middle, .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .blog-hero h1 { font-size: 3rem; }
+      .author-box { flex-direction: column; align-items: center; text-align: center; }
+    }
+    
+    @media (max-width: 768px) {
+      .blog-hero h1 { font-size: 2.5rem; }
+      .blog-meta { flex-direction: column; gap: 10px; }
+      .post-content { padding: 30px; }
+      .comment { flex-direction: column; }
+    }
+    
+    @media (max-width: 600px) {
+      .related-grid {
+        grid-template-columns: 1fr; /* 1 card on mobile */
+      }
+      .footer-top { grid-template-columns: 1fr; }
+      .navbar { padding: 1rem; }
+      .logo-text { font-size: 20px; }
+      .blog-hero h1 { font-size: 2rem; }
+    }
+    
+    /* Hide Theme & RTL in Mobile Top Navbar */
+    @media (max-width: 1280px) {
+      .navbar .controls #themeToggle,
+      .navbar .controls #rtlToggle {
+        display: none !important;
+      }
+    }
+    .mobile-nav-menu .nav-links a.active,
+.mobile-nav-menu .nav-links a.active:hover {
+  background: var(--secondary) !important; 
+  color: #000000 !important;
+  border-color: var(--secondary) !important;
+}
+  </style>
+</head>
+<body>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Header - Exact match from Home -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo"><i class="fas fa-bolt"></i><span class="logo-text">GrowScooter</span></a>
+      <ul class="nav-links">
+        <li class="dropdown"><a href="#" >Home <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu"><li><a href="index.html">Home 1</a></li><li><a href="home2.html">Home 2</a></li></ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="Blog.html" class="active">Blog</a></li>
+        <li><a href="models.html">Models</a></li>
+        <li><a href="faq.html" >FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="dropdown"><a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu"><li><a href="user.html">User</a></li><li><a href="admin.html">Admin</a></li></ul>
+        </li>
+              <li><a href="loginPage.html" class="nav-btn login-btn">Login</a></li>
+
+        <li><a href="signIn.html" class="nav-btn signup-btn">Sign Up</a></li>
+      </ul>
+      <div class="controls">
+        <button class="control-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+        <button class="control-btn" id="rtlToggle"><i class="fas fa-exchange-alt"></i></button>
+        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-nav-menu" id="mobileNavMenu">
+    <ul class="nav-links">
+      <li><a href="#"><i class="fas fa-caret-down"></i> Home</a></li>
+      <li><a href="index.html" class="home-sub-item">Home 1</a></li>
+      <li><a href="home2.html" class="home-sub-item">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="service.html">Service</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="models.html">models</a></li>
+      <li><a href="faq.html" >FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#"><i class="fas fa-caret-down"></i> Dashboard</a></li>
+      <li><a href="user.html" class="home-sub-item">User</a></li>
+      <li><a href="admin.html" class="home-sub-item">Admin</a></li>
+              <li><a href="loginPage.html" class="nav-btn login-btn">Login</a></li>
+
+    <li><a href="signIn.html">SignIn</a></li>
+    </ul>
+    <div class="mobile-controls">
+      <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
+      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+    </div>
+  </div>
+
+  <!-- Blog Hero - Matching Home style -->
+  <section class="blog-hero">
+    <img src="Images\pexels-mehmet-kocyi-gi-t-385500173-19356229.jpg" alt="Electric Scooter">
+    <div class="blog-hero-overlay"></div>
+    <div class="blog-hero-content">
+      <h1>10 Essential Tips for <span>First-Time Riders</span></h1>
+      <p>Everything you need to know before your first electric scooter ride</p>
+      <div class="blog-meta">
+        <span><i class="fas fa-calendar"></i> March 15, 2026</span>
+        <span><i class="fas fa-user"></i> Alex Rivera</span>
+        <span><i class="fas fa-clock"></i> 8 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Post Content -->
+  <div class="blog-post">
+    <div class="post-content">
+      <p class="post-lead">Welcome to the world of electric scooters! Whether you're looking to reduce your carbon footprint, save money on commuting, or just have fun exploring the city, riding an e-scooter is an exciting experience. Here are essential tips every beginner should know.</p>
+
+      <h2>1. Start with the Right Gear</h2>
+      <p>Safety should always be your top priority. Before your first ride, invest in quality protective gear:</p>
+      <ul>
+        <li><strong>Helmet:</strong> Always wear a certified helmet. It's essential for your safety.</li>
+        <li><strong>Knee and elbow pads:</strong> These prevent serious injuries during falls.</li>
+        <li><strong>Reflective clothing:</strong> Make sure you're visible, especially at night.</li>
+        <li><strong>Gloves:</strong> Protect your hands and improve grip.</li>
+      </ul>
+
+      <h2>2. Know Your Scooter</h2>
+      <p>Take time to familiarize yourself with your scooter's features:</p>
+      <ul>
+        <li><strong>Controls:</strong> Understand throttle, brakes, and bell location.</li>
+        <li><strong>Battery indicator:</strong> Learn to read battery level and plan rides.</li>
+        <li><strong>Speed modes:</strong> Start with the lowest setting.</li>
+        <li><strong>Weight limit:</strong> Check maximum load capacity.</li>
+      </ul>
+
+      <div class="tip-box">
+        <h4><i class="fas fa-lightbulb"></i> Pro Tip</h4>
+        <p>Before your first real ride, practice in an empty parking lot. Get comfortable with accelerating, braking, and turning at slow speeds.</p>
+      </div>
+
+      <h2>3. Master the Basics of Riding</h2>
+      <ul>
+        <li><strong>Stance:</strong> One foot forward, knees bent, weight centered.</li>
+        <li><strong>Accelerate smoothly:</strong> Ease into the throttle.</li>
+        <li><strong>Brake gradually:</strong> Apply brakes gently to avoid skidding.</li>
+        <li><strong>Look ahead:</strong> Scan for obstacles and traffic.</li>
+      </ul>
+
+      <div class="post-quote">
+        <i class="fas fa-quote-left"></i>
+        <p>"The freedom of riding comes with responsibility. Respecting traffic rules keeps everyone safe."</p>
+        <cite>— Alex Rivera, Safety Instructor</cite>
+      </div>
+
+      <h2>4. Follow Traffic Rules</h2>
+      <p>Electric scooters follow same laws as bicycles:</p>
+      <ul>
+        <li>Ride in bike lanes when available</li>
+        <li>Obey traffic signals</li>
+        <li>Yield to pedestrians</li>
+        <li>Use hand signals when turning</li>
+      </ul>
+
+      <h2>5. Master Hill Riding</h2>
+      <ul>
+        <li><strong>Going up:</strong> Maintain steady speed, lean forward slightly.</li>
+        <li><strong>Going down:</strong> Feather brakes, keep weight back.</li>
+      </ul>
+
+      <h2>6. Join the Community</h2>
+      <p>Connect with other riders through local groups and online forums for tips and support.</p>
+
+      <!-- Author Box -->
+      <div class="author-box">
+        <div class="author-avatar">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Alex Rivera">
+        </div>
+        <div class="author-info">
+          <h3>Alex Rivera</h3>
+          <p class="author-bio">Safety instructor and electric mobility enthusiast with 5+ years of experience teaching new riders.</p>
+          <div class="author-social">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="post-tags">
+        <a href="#" class="tag">#ElectricScooter</a>
+        <a href="#" class="tag">#BeginnerTips</a>
+        <a href="#" class="tag">#Safety</a>
+        <a href="#" class="tag">#UrbanMobility</a>
+      </div>
+
+      <!-- Share -->
+      <div class="post-share">
+        <span>Share this article:</span>
+        <div class="share-icons">
+          <a href="#" class="share-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="share-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="share-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="share-icon"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <!-- Comments -->
+      <div class="comments-section">
+        <h3 class="comments-title">Comments (2)</h3>
+        
+        <div class="comment">
+          <div class="comment-avatar">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80" alt="Sarah Johnson">
+          </div>
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-author">Sarah Johnson</span>
+              <span class="comment-date">March 16, 2026</span>
+            </div>
+            <p class="comment-text">This is exactly what I needed! Just got my first scooter yesterday. Thanks for the tips!</p>
+            <a href="#" class="comment-reply">Reply</a>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-avatar">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Mike Torres">
+          </div>
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-author">Mike Torres</span>
+              <span class="comment-date">March 15, 2026</span>
+            </div>
+            <p class="comment-text">Great article! The battery tips are especially helpful. I've been following these and my battery life has improved.</p>
+            <a href="#" class="comment-reply">Reply</a>
+          </div>
+        </div>
+
+        <!-- Comment Form -->
+        <div class="comment-form">
+          <h3>Leave a Comment</h3>
+          <form>
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Your Comment" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Post Comment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Posts - UPDATED WITH 4 CARDS -->
+    <div class="related-posts">
+      <h3 class="related-title">You Might Also Like</h3>
+      <div class="related-grid">
+        <div class="related-card">
+          <img src="Images\pexels-pixabay-159210.jpg" alt="Battery Life">
+          <div class="related-content">
+            <h4><a href="#">How to Extend Your Scooter's Battery Life</a></h4>
+          </div>
+        </div>
+        <div class="related-card">
+          <img src="Images\pexels-peely-723736.jpg" alt="Safety Gear">
+          <div class="related-content">
+            <h4><a href="#">Essential Safety Gear Every Rider Needs</a></h4>
+          </div>
+        </div>
+        <div class="related-card">
+          <img src="Images\pexels-nathansalt-2549355.jpg" alt="Urban Mobility">
+          <div class="related-content">
+            <h4><a href="#">The Future of Urban Mobility</a></h4>
+          </div>
+        </div>
+        <div class="related-card">
+          <img src="Images\pexels-fatih-sucu-43042350-17544242.jpg" alt="Maintenance Tips">
+          <div class="related-content">
+            <h4><a href="#">Scooter Maintenance Guide</a></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Blog -->
+    <a href="blog.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+  </div>
+
+  <!-- Footer - Exact match from Home -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-top">
+        <div class="footer-column"><a href="index.html" class="logo"><i class="fas fa-bolt"></i><span class="logo-text">GrowScooter</span></a><p style="margin-top:30px">Your ultimate destination for premium electric scooters and gear. Join our community of riders today.</p></div>
+        <div class="footer-column"><h3>QuickLinks</h3><ul><li><a href="contact.html">Contact</a></li><li><a href="service.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="models.html">Models</a></li></ul></div>
+        <div class="footer-column"><h3>Resources</h3><ul><li><a href="#">Safety Tips</a></li><li><a href="#">Riding Guides</a></li><li><a href="#">Battery Care</a></li></ul></div>
+        <div class="footer-column"><h3>Social Links</h3><ul><li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li><li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li><li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li></ul></div>
+      </div>
+      <div class="footer-middle"><h3 style="color:#00FF00">Building a Community of Riders</h3><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div></div>
+      <div class="footer-bottom"><div class="copyright">© 2026 GrowScooter. All rights reserved.</div></div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const h = document.getElementById('hamburger'), o = document.getElementById('mobileOverlay'), m = document.getElementById('mobileNavMenu');
+      if (!h || !o || !m) return;
+      function toggle() {
+        const a = m.classList.contains('active');
+        m.classList.toggle('active'); o.classList.toggle('active');
+        document.body.style.overflow = a ? '' : 'hidden';
+        h.innerHTML = a ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+      }
+      h.addEventListener('click', toggle);
+      o.addEventListener('click', toggle);
+      document.querySelectorAll('.mobile-nav-menu a').forEach(l => l.addEventListener('click', e => { if (!e.target.closest('a')?.querySelector('.fa-caret-down')) toggle(); }));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && m.classList.contains('active')) toggle(); });
+      window.addEventListener('resize', () => { if (window.innerWidth > 1280 && m.classList.contains('active')) toggle(); });
+
+      function theme() {
+        document.body.classList.toggle('dark-mode');
+        const d = document.body.classList.contains('dark-mode');
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => el.className = d ? 'fas fa-sun' : 'fas fa-moon');
+        const s = document.querySelector('#mobileThemeToggle span');
+        if (s) s.textContent = d ? 'Light Mode' : 'Dark Mode';
+        localStorage.setItem('theme', d ? 'dark' : 'light');
+      }
+      function rtl() {
+        const h = document.documentElement, r = h.getAttribute('dir') === 'rtl';
+        h.setAttribute('dir', r ? 'ltr' : 'rtl');
+        const s = document.querySelector('#mobileRtlToggle span');
+        if (s) s.textContent = r ? 'RTL' : 'LTR';
+        localStorage.setItem('direction', r ? 'ltr' : 'rtl');
+      }
+      document.getElementById('themeToggle')?.addEventListener('click', theme);
+      document.getElementById('mobileThemeToggle')?.addEventListener('click', theme);
+      document.getElementById('rtlToggle')?.addEventListener('click', rtl);
+      document.getElementById('mobileRtlToggle')?.addEventListener('click', rtl);
+
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => el.className = 'fas fa-sun');
+        const s = document.querySelector('#mobileThemeToggle span');
+        if (s) s.textContent = 'Light Mode';
+      }
+      if (localStorage.getItem('direction') === 'rtl') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        const s = document.querySelector('#mobileRtlToggle span');
+        if (s) s.textContent = 'LTR';
+      }
+    })();
+    function updateMobileActiveClass() {
+  const currentPage = window.location.pathname.split('/').pop().toLowerCase() || 'index.html';
+  const mobileLinks = document.querySelectorAll('.mobile-nav-menu .nav-links a:not(.home-sub-item):not([href="#"])');
+  
+  mobileLinks.forEach(link => {
+    link.classList.remove('active');
+    const linkHref = link.getAttribute('href').toLowerCase();
+    if (linkHref === currentPage) {
+      link.classList.add('active');
+    }
+  });
+}
+  </script>
+</body>
+</html>

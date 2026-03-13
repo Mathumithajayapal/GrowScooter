@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrowScooter - About Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="images\growwpark_logo.jpg">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #000000;
+      --secondary: #00FF00;
+      --text: #000000;
+      --text-light: #333333;
+      --bg: #FFFFFF;
+      --bg-light: #F0F0F0;
+      --border: #CCCCCC;
+      --shadow: 0 4px 12px rgba(0,255,0,0.1);
+      --shadow-lg: 0 20px 40px rgba(0,255,0,0.15);
+      --transition: all 0.4s ease;
+      --footer-bg: #FFFFFF;
+      --footer-text: #000000;
+    }
+    .dark-mode {
+      --primary: #00FF00;
+      --secondary: #00FF00;
+      --text: #FFFFFF;
+      --text-light: #CCCCCC;
+      --bg: #000000;
+      --bg-light: #111111;
+      --border: #333333;
+      --footer-bg: #000000;
+      --footer-text: #FFFFFF;
+    }
+    body {
+      font-family: 'Poppins', sans-serif; 
+      color: var(--text); 
+      background: var(--bg);
+      line-height: 1.6; 
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column;
+      transition: 0.3s;
+    }
+    h1, h2, h3, h4, h5, h6, .logo-text, .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    .dark-mode h1, .dark-mode h2, .dark-mode h3 { color: #FFFFFF !important; }
+
+    /* Header - Exact copy from FAQ */
+    header {
+      background: var(--bg); 
+      box-shadow: var(--shadow); 
+      position: sticky; 
+      top: 0;
+      z-index: 1000; 
+      border-bottom: 3px solid var(--secondary);
+    }
+    .navbar {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      padding: 1rem 2rem; 
+      max-width: 1400px; 
+      margin: 0 auto;
+    }
+    .logo { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      text-decoration: none; 
+    }
+    .logo i { color: var(--secondary); font-size: 28px; }
+    .logo-text {
+      font-size: 25px; 
+      font-weight: 800;
+      background: linear-gradient(45deg, #00FF00, #00FF00);
+      -webkit-background-clip: text; 
+      background-clip: text; 
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links { 
+      display: flex; 
+      list-style: none; 
+      gap: 0.75rem; 
+    }
+    .nav-links a {
+      text-decoration: none; 
+      color: var(--text); 
+      font-weight: 600;
+      padding: 8px 16px; 
+      border-radius: 8px; 
+      transition: var(--transition); 
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--secondary); 
+      background: rgba(0,255,0,0.08);
+    }
+    .dropdown { position: relative; }
+    .dropdown-menu {
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      background: var(--bg);
+      list-style: none; 
+      padding: 15px 0; 
+      min-width: 200px; 
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg); 
+      border: 1px solid var(--border); 
+      display: none; 
+      z-index: 1000;
+    }
+    .dropdown-menu a {
+      display: block; 
+      padding: 12px 20px; 
+      color: var(--text); 
+      text-decoration: none;
+    }
+    .dropdown-menu a:hover {
+      background: var(--secondary); 
+      color: #000000; 
+      padding-left: 30px;
+    }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .controls { 
+      display: flex; 
+      gap: 10px; 
+      align-items: center; 
+    }
+    .control-btn {
+      background: transparent; 
+      border: none; 
+      font-size: 18px; 
+      padding: 8px;
+      cursor: pointer; 
+      color: var(--text); 
+      transition: 0.3s;
+    }
+    .control-btn:hover { 
+      color: var(--secondary); 
+      transform: scale(1.1); 
+    }
+    .hamburger {
+      display: none; 
+      background: none; 
+      border: 2px solid var(--border);
+      border-radius: 8px; 
+      font-size: 20px; 
+      cursor: pointer; 
+      padding: 8px 12px; 
+      color: var(--text);
+    }
+    .mobile-nav-menu {
+      position: fixed; 
+      top: 0; 
+      right: -100%; 
+      width: 320px; 
+      height: 100vh;
+      background: var(--bg-light); 
+      z-index: 999; 
+      transition: right 0.4s;
+      padding: 90px 2rem 2rem; 
+      border-left: 3px solid var(--secondary); 
+      overflow-y: auto;
+    }
+    .mobile-nav-menu.active { right: 0; }
+    .mobile-nav-menu .nav-links {
+      display: flex !important; 
+      flex-direction: column !important; 
+      gap: 0.5rem !important;
+      padding-bottom: 30px !important; 
+      list-style: none !important;
+    }
+    .mobile-nav-menu .nav-links a {
+      display: block !important; 
+      padding: 15px 20px !important;
+      border: 2px solid var(--border) !important; 
+      border-radius: 8px !important;
+      background: var(--bg) !important; 
+      text-decoration: none !important;
+      color: var(--text) !important; 
+      font-weight: 600 !important; 
+      width: 100% !important;
+    }
+    .mobile-nav-menu .nav-links a:hover {
+      background: var(--secondary) !important; 
+      color: #000000 !important;
+      border-color: var(--secondary) !important;
+    }
+    .mobile-nav-menu .nav-links .home-sub-item {
+      padding-left: 40px !important; 
+      margin-top: -5px !important; 
+      margin-bottom: 5px !important;
+      border-color: var(--border) !important; 
+      background: var(--bg-light) !important; 
+      font-size: 0.9rem !important;
+    }
+    .mobile-overlay {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      background: rgba(0,0,0,0.5); 
+      z-index: 998; 
+      display: none;
+    }
+    .mobile-overlay.active { display: block; }
+    .mobile-controls {
+      margin-top: 2rem; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 1rem;
+    }
+    .mobile-controls .control-btn {
+      width: 100%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      gap: 10px; 
+      border: 2px solid var(--border); 
+      border-radius: 8px;
+      padding: 12px; 
+      background: var(--bg);
+    }
+    .nav-btn { 
+      padding: 8px 18px !important; 
+      border-radius: 50px !important; 
+      font-weight: 600; 
+    }
+    .login-btn { 
+      border: 2px solid var(--secondary); 
+      color: var(--secondary) !important; 
+    }
+    .login-btn:hover { 
+      background: #00FF00; 
+      color: #000000 !important; 
+    }
+    .signup-btn { 
+      background: var(--secondary); 
+      color: #000000 !important; 
+    }
+    .signup-btn:hover { background: #00CC00; }
+
+    /* Hero - Exact copy from FAQ */
+    .hero {
+      position: relative;
+      height: 95vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 4rem;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 span { color: #00FF00; }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #dddddd;
+      margin-bottom: 35px;
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+    .btn-primary { background: #00FF00; color: #000; }
+    .btn-primary:hover { background: #00cc00; }
+    .btn-secondary { border: 2px solid #00FF00; color: #00FF00; }
+    .btn-secondary:hover { background: #00FF00; color: #000; }
+
+    /* About Section */
+    .about-section {
+      padding: 80px 5%;
+      background: var(--bg-light);
+    }
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Our Story */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .story-content h2 {
+       font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 35px;
+     
+    }
+    .story-content h2 span {
+       font-family: 'Playfair Display', serif;
+      font-weight: 500;
+     
+    }
+    .story-content p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    .story-image {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .story-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s;
+    }
+    .story-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin: 60px 0;
+    }
+    .stat-card {
+      background: var(--bg);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .stat-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--secondary);
+      box-shadow: var(--shadow-lg);
+    }
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--secondary);
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 5px;
+    }
+    .stat-label {
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+
+    /* Mission */
+    .mission-section {
+      background: var(--bg);
+      border-radius: 30px;
+      padding: 60px;
+      margin: 60px 0;
+      border: 1px solid var(--border);
+    }
+    .mission-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .mission-content h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      font-weight: 20px;
+    }
+    .mission-content h2 span {
+      color: var(--secondary);
+    }
+    .mission-content p {
+      color: var(--text-light);
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+    .mission-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .mission-feature {
+      text-align: center;
+    }
+    .mission-feature i {
+      font-size: 3rem;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+    .mission-feature h4 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .mission-feature p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Team */
+    .team-section {
+      margin: 80px 0;
+    }
+    .team-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .team-header h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .team-header h2 span {
+      color: var(--secondary);
+    }
+    .team-header p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .team-card {
+      background: var(--bg);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .team-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--secondary);
+      box-shadow: var(--shadow-lg);
+    }
+    .team-image {
+      height: 300px;
+      overflow: hidden;
+    }
+    .team-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+    .team-card:hover .team-image img {
+      transform: scale(1.1);
+    }
+    .team-info {
+      padding: 25px;
+      text-align: center;
+    }
+    .team-info h4 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+    .team-info .position {
+      color: var(--secondary);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+    .team-info p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .team-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: var(--transition);
+    }
+    .team-social a:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    /* Values */
+    .values-section {
+      margin: 80px 0;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+    .value-card {
+      background: var(--bg);
+      border-radius: 20px;
+      padding: 40px 25px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .value-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--secondary);
+      box-shadow: var(--shadow-lg);
+    }
+    .value-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 255, 0, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+    }
+    .value-icon i {
+      font-size: 35px;
+      color: var(--secondary);
+    }
+    .value-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+    .value-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    /* CTA */
+    .about-cta {
+      background: linear-gradient(135deg, #000000, #1a1a1a);
+      border-radius: 30px;
+      padding: 60px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .about-cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+    .about-cta h2 span {
+      color: var(--secondary);
+    }
+    .about-cta p {
+      color: #cccccc;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .about-cta .btn {
+      margin: 0 10px;
+    }
+
+    /* Footer - Exact copy from FAQ */
+    .site-footer {
+      background: var(--footer-bg); 
+      color: var(--footer-text);
+      padding: 70px 0 40px; 
+      border-top: 4px solid #00FF00; 
+      margin-top: auto;
+    }
+    .dark-mode .site-footer { background: #000000 !important; }
+    .footer-content { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
+    .footer-top {
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 50px; 
+      margin-bottom: 50px;
+    }
+    .footer-column h3 {
+      color: #00FF00; 
+      font-size: 1rem; 
+      font-weight: 700; 
+      margin-bottom: 25px;
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      padding-bottom: 12px;
+      border-bottom: 2px solid #00FF00;
+    }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: 12px; }
+    .footer-column a {
+      color: var(--footer-text); 
+      text-decoration: none; 
+      font-size: 0.95rem; 
+      transition: var(--transition);
+    }
+    .footer-column a:hover { color: #00FF00; transform: translateX(8px); }
+    .footer-middle {
+      padding: 35px 0; 
+      border-top: 1px solid #00FF00;
+      border-bottom: 1px solid #00FF00; 
+      margin-bottom: 35px;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+    .footer-links { display: flex; gap: 35px; }
+    .footer-links a { color: var(--footer-text); text-decoration: none; font-size: 0.95rem; }
+    .footer-links a:hover { color: #00FF00; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .copyright { color: var(--footer-text); font-size: 0.9rem; opacity: 0.8; }
+
+    /* RTL */
+    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+    [dir="rtl"] .footer-column a:hover { transform: translateX(-8px); }
+    [dir="rtl"] .mobile-nav-menu {
+      left: -100%; 
+      right: auto; 
+      border-left: none; 
+      border-right: 3px solid var(--secondary);
+    }
+    [dir="rtl"] .mobile-nav-menu.active { left: 0; }
+    [dir="rtl"] .home-sub-item { padding-left: 20px !important; padding-right: 40px !important; }
+
+    /* Responsive */
+    @media (max-width: 1280px) {
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: none !important; }
+      .hamburger { display: block !important; }
+    }
+    @media (min-width: 1281px) {
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: flex !important; }
+      .hamburger { display: none !important; }
+    }
+    @media (max-width: 1000px) {
+      .story-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .team-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .mission-features { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .footer-top { grid-template-columns: repeat(2, 1fr); }
+      .footer-middle, .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .hero h1 { font-size: 3rem; }
+      .about-cta .btn { display: block; margin: 10px auto; width: 200px; }
+    }
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.5rem; }
+      .hero-content p { font-size: 1rem; }
+      .hero { height: 70vh; }
+      .team-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; }
+      .btn { padding: 12px 24px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .navbar { padding: 1rem; }
+      .logo-text { font-size: 20px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .mission-section { padding: 40px 20px; }
+      .about-cta { padding: 40px 20px; }
+    }
+    @media (max-width: 480px) { .model-specs, .about-features { grid-template-columns: 1fr; } }
+    /* ===== Hide Theme & RTL in Mobile Top Navbar ===== */
+@media (max-width: 1280px) {
+  .navbar .controls #themeToggle,
+  .navbar .controls #rtlToggle {
+    display: none !important;
+  }
+}
+.mobile-nav-menu .nav-links a.active,
+.mobile-nav-menu .nav-links a.active:hover {
+  background: var(--secondary) !important; 
+  color: #000000 !important;
+  border-color: var(--secondary) !important;
+}
+  </style>
+</head>
+<body>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Header - Exact copy from FAQ -->
+  <header>
+   <nav class="navbar">
+      <a href="index.html" class="logo"><i class="fas fa-bolt"></i><span class="logo-text">GrowScooter</span></a>
+      <ul class="nav-links">
+        <li class="dropdown"><a href="#" >Home <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu"><li><a href="index.html">Home 1</a></li><li><a href="home2.html">Home 2</a></li></ul>
+        </li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="models.html">Models</a></li>
+        <li><a href="faq.html" >FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="dropdown"><a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu"><li><a href="user.html">User</a></li><li><a href="admin.html">Admin</a></li></ul>
+        </li>
+              <li><a href="login.html" class="nav-btn login-btn">Login</a></li>
+
+        <li><a href="signIn.html" class="nav-btn signup-btn">Sign Up</a></li>
+      </ul>
+      <div class="controls">
+        <button class="control-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+        <button class="control-btn" id="rtlToggle"><i class="fas fa-exchange-alt"></i></button>
+        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-nav-menu" id="mobileNavMenu">
+    <ul class="nav-links">
+      <li><a href="#"><i class="fas fa-caret-down"></i> Home</a></li>
+      <li><a href="index.html" class="home-sub-item">Home 1</a></li>
+      <li><a href="home2.html" class="home-sub-item">Home 2</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="service.html">Service</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="models.html">models</a></li>
+      <li><a href="faq.html" >FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#"><i class="fas fa-caret-down"></i> Dashboard</a></li>
+      <li><a href="user.html" class="home-sub-item">User</a></li>
+      <li><a href="admin.html" class="home-sub-item">Admin</a></li>
+              <li><a href="login.html" class="nav-btn login-btn">Login</a></li>
+
+    <li><a href="signIn.html">SignIn</a></li>
+    </ul>
+    <div class="mobile-controls">
+      <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
+      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+    </div>
+  </div>
+
+  <!-- Hero - Exact copy from FAQ style -->
+  <section class="hero">
+    <img src="Images\pexels-matreding-21550530.jpg" alt="About GrowScooter">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>About <span>GrowScooter</span></h1>
+      <p>Discover the story behind the future of urban mobility and meet the team driving innovation.</p>
+      <div class="hero-buttons">
+        <a href="#story" class="btn btn-primary">Our Story</a>
+        <a href="#team" class="btn btn-secondary">Meet the Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="about-section">
+    <div class="about-container">
+      
+      <!-- Our Story -->
+      <div id="story" class="story-grid">
+        <div class="story-content">
+          <h2>Our <span>Story</span></h2>
+          <p>Founded in 2020, GrowScooter began with a simple mission: to revolutionize urban transportation. What started as a small startup with just 50 scooters in downtown Los Angeles has grown into a nationwide movement with thousands of riders across 25+ cities.</p>
+          <p>Our journey has been driven by innovation, sustainability, and a passion for creating seamless mobility solutions. From our first prototype to our latest Sport Pro model, every scooter we build reflects our commitment to quality, safety, and rider satisfaction.</p>
+          <p>Today, we're proud to be at the forefront of the electric mobility revolution, helping cities reduce traffic congestion and carbon emissions while providing an enjoyable, efficient way to get around.</p>
+        </div>
+        <div class="story-image">
+          <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80" alt="Our Story">
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">50K+</div>
+          <div class="stat-label">Happy Riders</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">25+</div>
+          <div class="stat-label">Cities</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2M+</div>
+          <div class="stat-label">Total Rides</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4.8</div>
+          <div class="stat-label">App Store Rating</div>
+        </div>
+      </div>
+
+      <!-- Mission -->
+      <div class="mission-section">
+        <div class="mission-content">
+          <h2>Our <span>Mission</span></h2>
+          <p>To transform urban mobility by providing accessible, sustainable, and enjoyable electric scooter experiences that connect communities and reduce environmental impact.</p>
+          <div class="mission-features">
+            <div class="mission-feature">
+              <i class="fas fa-leaf"></i>
+              <h4>Sustainability</h4>
+              <p>Zero-emission rides helping cities breathe easier</p>
+            </div>
+            <div class="mission-feature">
+              <i class="fas fa-users"></i>
+              <h4>Community</h4>
+              <p>Building a global network of passionate riders</p>
+            </div>
+            <div class="mission-feature">
+              <i class="fas fa-rocket"></i>
+              <h4>Innovation</h4>
+              <p>Continuously improving our technology and service</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Values -->
+      <div class="values-section">
+        <div class="team-header">
+          <h2>Our <span>Values</span></h2>
+          <p>The principles that guide everything we do</p>
+        </div>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Safety First</h3>
+            <p>We prioritize rider safety through rigorous maintenance and innovative safety features.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fas fa-leaf"></i></div>
+            <h3>Sustainability</h3>
+            <p>Committed to reducing carbon footprint and promoting eco-friendly transportation.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fas fa-heart"></i></div>
+            <h3>Community</h3>
+            <p>Building connections between riders and fostering a sense of belonging.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+            <h3>Innovation</h3>
+            <p>Constantly pushing boundaries to deliver the best riding experience.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div id="team" class="team-section">
+        <div class="team-header">
+          <h2>Meet Our <span>Team</span></h2>
+          <p>The passionate people behind GrowScooter</p>
+        </div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-image">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Michael Chen">
+            </div>
+            <div class="team-info">
+              <h4>Michael Chen</h4>
+              <div class="position">CEO & Co-Founder</div>
+              <p>Former Tesla engineer with a vision for sustainable urban mobility.</p>
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Sarah Rodriguez">
+            </div>
+            <div class="team-info">
+              <h4>Sarah Rodriguez</h4>
+              <div class="position">COO</div>
+              <p>Operations expert with 10+ years in logistics and fleet management.</p>
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-image">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80" alt="David Kim">
+            </div>
+            <div class="team-info">
+              <h4>David Kim</h4>
+              <div class="position">CTO</div>
+              <p>Tech innovator specializing in IoT and smart mobility solutions.</p>
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="about-cta">
+        <h2>Join the <span>Movement</span></h2>
+        <p>Be part of the electric mobility revolution. Download the app and start riding today.</p>
+        <a href="#" class="btn btn-primary">Download App</a>
+        <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer - Exact copy from FAQ -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-top">
+        <div class="footer-column"><a href="index.html" class="logo"><i class="fas fa-bolt"></i><span class="logo-text">GrowScooter</span></a><p style="margin-top:30px">Your ultimate destination for premium electric scooters and gear. Join our community of riders today.</p></div>
+        <div class="footer-column"><h3>QuickLinks</h3><ul><li><a href="contact.html">Contact</a></li><li><a href="service.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="models.html">Models</a></li></ul></div>
+        <div class="footer-column"><h3>Resources</h3><ul><li><a href="#">Safety Tips</a></li><li><a href="#">Riding Guides</a></li><li><a href="#">Battery Care</a></li></ul></div>
+        <div class="footer-column"><h3>Social Links</h3><ul><li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li><li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li><li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li></ul></div>
+      </div>
+      <div class="footer-middle"><h3 style="color:#00FF00">Building a Community of Riders</h3><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div></div>
+      <div class="footer-bottom"><div class="copyright">© 2026 GrowScooter. All rights reserved.</div></div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const h = document.getElementById('hamburger'), o = document.getElementById('mobileOverlay'), m = document.getElementById('mobileNavMenu');
+      if (!h || !o || !m) return;
+      function toggle() {
+        const a = m.classList.contains('active');
+        m.classList.toggle('active'); o.classList.toggle('active');
+        document.body.style.overflow = a ? '' : 'hidden';
+        h.innerHTML = a ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+      }
+      h.addEventListener('click', toggle);
+      o.addEventListener('click', toggle);
+      document.querySelectorAll('.mobile-nav-menu a').forEach(l => l.addEventListener('click', e => { if (!e.target.closest('a')?.querySelector('.fa-caret-down')) toggle(); }));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && m.classList.contains('active')) toggle(); });
+      window.addEventListener('resize', () => { if (window.innerWidth > 1280 && m.classList.contains('active')) toggle(); });
+
+      function theme() {
+        document.body.classList.toggle('dark-mode');
+        const d = document.body.classList.contains('dark-mode');
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => el.className = d ? 'fas fa-sun' : 'fas fa-moon');
+        const s = document.querySelector('#mobileThemeToggle span');
+        if (s) s.textContent = d ? 'Light Mode' : 'Dark Mode';
+        localStorage.setItem('theme', d ? 'dark' : 'light');
+      }
+      function rtl() {
+        const h = document.documentElement, r = h.getAttribute('dir') === 'rtl';
+        h.setAttribute('dir', r ? 'ltr' : 'rtl');
+        const s = document.querySelector('#mobileRtlToggle span');
+        if (s) s.textContent = r ? 'RTL' : 'LTR';
+        localStorage.setItem('direction', r ? 'ltr' : 'rtl');
+      }
+      document.getElementById('themeToggle')?.addEventListener('click', theme);
+      document.getElementById('mobileThemeToggle')?.addEventListener('click', theme);
+      document.getElementById('rtlToggle')?.addEventListener('click', rtl);
+      document.getElementById('mobileRtlToggle')?.addEventListener('click', rtl);
+
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => el.className = 'fas fa-sun');
+        const s = document.querySelector('#mobileThemeToggle span');
+        if (s) s.textContent = 'Light Mode';
+      }
+      if (localStorage.getItem('direction') === 'rtl') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        const s = document.querySelector('#mobileRtlToggle span');
+        if (s) s.textContent = 'LTR';
+      }
+    })();
+    function updateMobileActiveClass() {
+  const currentPage = window.location.pathname.split('/').pop().toLowerCase() || 'index.html';
+  const mobileLinks = document.querySelectorAll('.mobile-nav-menu .nav-links a:not(.home-sub-item):not([href="#"])');
+  
+  mobileLinks.forEach(link => {
+    link.classList.remove('active');
+    const linkHref = link.getAttribute('href').toLowerCase();
+    if (linkHref === currentPage) {
+      link.classList.add('active');
+    }
+  });
+}
+  </script>
+</body>
+</html>

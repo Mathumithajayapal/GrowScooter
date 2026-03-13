@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | GrowScooter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="images\growwpark_logo.jpg">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #000000;
+      --secondary: #00FF00;
+      --text: #000000;
+      --text-light: #333333;
+      --bg: #FFFFFF;
+      --bg-light: #F0F0F0;
+      --border: #CCCCCC;
+      --shadow: 0 4px 12px rgba(0,255,0,0.1);
+      --shadow-lg: 0 20px 40px rgba(0,255,0,0.15);
+      --transition: all 0.4s ease;
+    }
+   
+    body {
+      font-family: 'Poppins', sans-serif; 
+      color: var(--text); 
+      background: var(--bg);
+      line-height: 1.6; 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      padding: 20px;
+      overflow-y: auto; /* Enable scrolling */
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+   
+
+    /* 404 Main Section */
+    .error-section {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      padding: 80px 20px;
+    }
+    
+   
+    @keyframes scooterDrive {
+      0%, 100% { transform: translateX(-20px) rotate(0deg); }
+      25% { transform: translateX(20px) rotate(5deg); }
+      50% { transform: translateX(0px) rotate(-5deg); }
+      75% { transform: translateX(20px) rotate(5deg); }
+    }
+    .road-line {
+      width: 200px;
+      height: 4px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--secondary) 0px,
+        var(--secondary) 20px,
+        transparent 20px,
+        transparent 40px
+      );
+      margin: 10px auto;
+      animation: roadMove 1s infinite linear;
+    }
+    @keyframes roadMove {
+      from { background-position: 0 0; }
+      to { background-position: 40px 0; }
+    }
+
+    /* 404 Number */
+    .error-number {
+      font-size: 12rem;
+      font-weight: 800;
+      color: var(--secondary);
+      line-height: 1;
+      font-family: 'Playfair Display', serif;
+      text-shadow: 5px 5px 0 rgba(0, 255, 0, 0.2), 
+                   10px 10px 0 rgba(0, 255, 0, 0.1);
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      animation: glitchText 4s infinite;
+    }
+    .error-number::before,
+    .error-number::after {
+      content: '404';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .error-number::before {
+      color: #ff0000;
+      z-index: -1;
+      animation: glitchOffset 0.3s infinite;
+    }
+    .error-number::after {
+      color: #0000ff;
+      z-index: -2;
+      animation: glitchOffset 0.3s infinite reverse;
+    }
+    @keyframes glitchText {
+      0%, 100% { transform: skew(0deg); }
+      95% { transform: skew(0deg); }
+      96% { transform: skew(15deg); }
+      97% { transform: skew(-15deg); }
+      98% { transform: skew(10deg); }
+      99% { transform: skew(-10deg); }
+    }
+    @keyframes glitchOffset {
+      0% { transform: translate(0); }
+      20% { transform: translate(-3px, 2px); }
+      40% { transform: translate(3px, -2px); }
+      60% { transform: translate(-2px, 3px); }
+      80% { transform: translate(2px, -3px); }
+      100% { transform: translate(0); }
+    }
+
+    .error-title {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .error-title span {
+      color: var(--secondary);
+      font-style: italic;
+      position: relative;
+      display: inline-block;
+    }
+    .error-title span::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--secondary);
+      opacity: 0.3;
+      border-radius: 10px;
+    }
+
+    .error-message {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Buttons */
+    .error-actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+    .error-btn {
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+    }
+    .error-btn-primary {
+      background: var(--secondary);
+      color: #000;
+      box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+    }
+    .error-btn-primary:hover {
+      background: #00cc00;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 255, 0, 0.3);
+    }
+    .error-btn-secondary {
+      border: 2px solid var(--secondary);
+      color: var(--secondary);
+    }
+    .error-btn-secondary:hover {
+      background: var(--secondary);
+      color: #000;
+      transform: translateY(-5px);
+    }
+
+    /* Quick Links */
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      max-width: 500px;
+      margin: 40px auto 0;
+    }
+    .quick-link {
+      background: var(--bg-light);
+      padding: 15px 10px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .quick-link:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+      box-shadow: var(--shadow);
+    }
+    .quick-link i {
+      font-size: 1.8rem;
+      color: var(--secondary);
+    }
+    .quick-link span {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .error-number { font-size: 10rem; }
+      .error-title { font-size: 2.5rem; }
+    }
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .error-section { padding: 60px 15px; }
+      .error-number { font-size: 8rem; }
+      .error-title { font-size: 2rem; }
+      .error-message { font-size: 1rem; }
+      .quick-links { grid-template-columns: repeat(2, 1fr); }
+      .scooter-icon { font-size: 6rem; }
+      .theme-toggle {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- 404 Main Content -->
+  <section class="error-section">
+    <!-- Animated Scooter -->
+    <div class="scooter-animation">
+      <i class="fas fa-bolt scooter-icon"></i>
+    </div>
+    <div class="road-line"></div>
+
+    <!-- 404 Number -->
+    <div class="error-number">404</div>
+
+    <!-- Title -->
+    <h1 class="error-title">Lost Your <span>Way?</span></h1>
+    
+    <!-- Message -->
+    <p class="error-message">Looks like you've taken a wrong turn. Don't worry, even the best riders get lost sometimes!</p>
+
+    <!-- Action Buttons -->
+    <div class="error-actions">
+      <a href="index.html" class="error-btn error-btn-primary">
+        <i class="fas fa-home"></i> Ride Home
+      </a>
+      <a href="models.html" class="error-btn error-btn-secondary">
+        <i class="fas fa-bolt"></i> Explore Models
+      </a>
+    </div>
+
+  
+
+  
+</body>
+</html>
