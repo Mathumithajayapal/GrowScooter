@@ -2,13 +2,13 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GrowScooter - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>SparkRide - Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/jpeg" href="images\growwpark_logo.jpg">
+  <link rel="icon" type="image/jpeg" href="images/growwpark_logo.jpg">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,9 +30,7 @@
       color: var(--text); background: var(--bg);
       min-height: 100vh; transition: 0.3s; overflow-x: hidden;
     }
-    body.menu-open {
-      overflow: hidden;
-    }
+    body.menu-open { overflow: hidden; }
     h1, h2, h3, h4, h5, h6, .logo-text {
       font-family: 'Playfair Display', serif; font-weight: 700;
     }
@@ -54,13 +52,8 @@
         transform: translateX(-100%);
         box-shadow: none;
       }
-      [dir="rtl"] .sidebar {
-        transform: translateX(100%);
-      }
-      .sidebar.active {
-        transform: translateX(0);
-        box-shadow: var(--shadow-lg);
-      }
+      [dir="rtl"] .sidebar { transform: translateX(100%); }
+      .sidebar.active { transform: translateX(0); box-shadow: var(--shadow-lg); }
     }
 
     .sidebar-header {
@@ -122,56 +115,33 @@
     }
     [dir="rtl"] .main-content { margin-left: 0; margin-right: var(--sidebar-width); }
 
-    /* Mobile Menu Toggle - NOT STICKY, scrolls with page */
+    /* Mobile Menu Toggle */
     .mobile-menu-toggle {
-      display: none; 
-      width: 40px; 
-      height: 40px; 
-      border-radius: 50%; 
-      background: #00FF00;
-      border: none; 
-      color: #000000; 
-      font-size: 18px; 
-      cursor: pointer;
-      box-shadow: var(--shadow-lg);
-      transition: var(--transition);
-      margin-bottom: 15px; /* Adds space below the button */
+      display: none; width: 40px; height: 40px; border-radius: 50%; background: #00FF00;
+      border: none; color: #000000; font-size: 18px; cursor: pointer;
+      box-shadow: var(--shadow-lg); transition: var(--transition); margin-bottom: 15px;
     }
     .mobile-menu-toggle:hover { transform: scale(1.05); background: #00CC00; }
     
-    /* Container for mobile header that includes hamburger and title */
     .mobile-header {
-      display: none;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-      width: 100%;
+      display: none; align-items: center; gap: 15px; margin-bottom: 20px; width: 100%;
     }
-    
     .mobile-header .page-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text);
-      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700; color: var(--text); font-family: 'Playfair Display', serif;
     }
 
     /* Top Header */
     .top-header {
       height: 70px; display: flex; align-items: center;
-      justify-content: space-between; margin-bottom: 30px;
-      position: relative;
+      justify-content: space-between; margin-bottom: 30px; position: relative;
     }
     .header-title h1 { font-size: 1.8rem; color: var(--text); }
     .header-title p { color: var(--text-light); font-size: 0.9rem; }
     .header-controls { display: flex; align-items: center; gap: 10px; }
     .header-search { position: relative; }
     .header-search input {
-      padding: 8px 35px 8px 15px;
-      border: 1px solid var(--border);
-      border-radius: 30px; background: var(--bg); color: var(--text);
-      width: 220px;
-      font-size: 0.9rem;
-      transition: var(--transition);
+      padding: 8px 35px 8px 15px; border: 1px solid var(--border); border-radius: 30px;
+      background: var(--bg); color: var(--text); width: 220px; font-size: 0.9rem; transition: var(--transition);
     }
     [dir="rtl"] .header-search input { padding: 8px 15px 8px 35px; }
     .header-search input:focus { border-color: var(--secondary); outline: none; }
@@ -181,17 +151,14 @@
     }
     [dir="rtl"] .header-search i { right: auto; left: 12px; }
     .header-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%; background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text); cursor: pointer;
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg);
+      border: 1px solid var(--border); color: var(--text); cursor: pointer;
       transition: var(--transition); display: flex; align-items: center; justify-content: center;
       font-size: 16px;
     }
     .header-btn:hover { border-color: var(--secondary); color: var(--secondary); transform: scale(1.05); }
 
-    /* Stats Cards */
+    /* Stats Cards (Dashboard) */
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 35px;
     }
@@ -208,9 +175,8 @@
     .stat-card:hover::before { transform: translateX(0); }
     .stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
     .stat-icon {
-      width: 45px; height: 45px; background: rgba(0, 255, 0, 0.1);
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      margin-bottom: 12px;
+      width: 45px; height: 45px; background: rgba(0, 255, 0, 0.1); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
     }
     .stat-icon i { font-size: 22px; color: var(--secondary); }
     .stat-card h3 { font-size: 0.85rem; color: var(--text-light); margin-bottom: 6px; }
@@ -218,15 +184,17 @@
     .stat-trend { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; }
     .trend-up { color: #00FF00; } .trend-down { color: #FF4444; }
 
-    /* Dashboard Grid */
+    /* Dashboard Grid - Will stack on mobile */
     .dashboard-grid {
-      display: grid; grid-template-columns: 2fr 1fr; gap: 25px; margin-bottom: 35px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin-bottom: 35px;
     }
 
     /* Recent Rides Card */
     .recent-rides {
-      background: var(--bg-light); border-radius: 16px; padding: 20px;
-      border: 1px solid var(--border);
+      background: var(--bg-light); border-radius: 16px; padding: 20px; border: 1px solid var(--border);
     }
     .section-header {
       display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;
@@ -239,20 +207,18 @@
     .view-all:hover { text-decoration: underline; }
     [dir="rtl"] .view-all i { transform: rotate(180deg); }
     .ride-item {
-      display: flex; align-items: center; gap: 12px; padding: 12px 0;
-      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border);
     }
     .ride-item:last-child { border-bottom: none; }
     .ride-icon {
-      width: 40px; height: 40px; background: rgba(0, 255, 0, 0.1);
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; background: rgba(0, 255, 0, 0.1); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
     }
     .ride-icon i { font-size: 18px; color: var(--secondary); }
     .ride-details { flex: 1; }
     .ride-details h4 { font-size: 0.95rem; margin-bottom: 3px; color: var(--text); }
     .ride-details p {
-      font-size: 0.75rem; color: var(--text-light);
-      display: flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; color: var(--text-light); display: flex; align-items: center; gap: 8px;
     }
     .ride-details p i { font-size: 10px; color: var(--secondary); }
     .ride-status {
@@ -267,8 +233,7 @@
       padding: 20px; color: white; position: relative; overflow: hidden;
     }
     .scooter-title {
-      font-size: 0.85rem; color: var(--secondary); margin-bottom: 12px;
-      display: flex; align-items: center; gap: 5px;
+      font-size: 0.85rem; color: var(--secondary); margin-bottom: 12px; display: flex; align-items: center; gap: 5px;
     }
     .scooter-model { font-size: 1.4rem; margin-bottom: 5px; color: white; }
     .scooter-plate { font-size: 0.85rem; color: #CCCCCC; margin-bottom: 15px; }
@@ -290,8 +255,7 @@
     .action-btn {
       width: 100%; padding: 10px; background: #00FF00; border: none; border-radius: 10px;
       color: #000000; font-weight: 600; cursor: pointer; transition: var(--transition);
-      display: flex; align-items: center; justify-content: center; gap: 6px;
-      font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.9rem;
     }
     .action-btn:hover { background: #00CC00; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,255,0,0.3); }
     [dir="rtl"] .action-btn i { transform: rotate(180deg); }
@@ -302,9 +266,8 @@
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
     }
     .action-card {
-      background: var(--bg-light); border-radius: 12px; padding: 15px;
-      text-align: center; border: 1px solid var(--border);
-      transition: var(--transition); cursor: pointer;
+      background: var(--bg-light); border-radius: 12px; padding: 15px; text-align: center;
+      border: 1px solid var(--border); transition: var(--transition); cursor: pointer;
     }
     .action-card:hover { transform: translateY(-3px); border-color: var(--secondary); box-shadow: var(--shadow); }
     .action-card i { font-size: 24px; color: var(--secondary); margin-bottom: 8px; }
@@ -313,13 +276,12 @@
 
     /* Ride History Table */
     .ride-history {
-      background: var(--bg-light); border-radius: 16px; padding: 20px;
-      border: 1px solid var(--border);
+      background: var(--bg-light); border-radius: 16px; padding: 20px; border: 1px solid var(--border);
     }
     .history-table { width: 100%; border-collapse: collapse; }
     .history-table th {
-      text-align: left; padding: 10px 0; color: var(--text-light);
-      font-weight: 600; font-size: 0.8rem; border-bottom: 2px solid var(--border);
+      text-align: left; padding: 10px 0; color: var(--text-light); font-weight: 600;
+      font-size: 0.8rem; border-bottom: 2px solid var(--border);
     }
     [dir="rtl"] .history-table th { text-align: right; }
     .history-table td { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; color: var(--text); }
@@ -329,151 +291,233 @@
 
     /* Sidebar Overlay */
     .sidebar-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 99;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5); z-index: 99; opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
     }
-    .sidebar-overlay.active {
-      display: block;
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .sidebar-overlay.active { display: block; opacity: 1; pointer-events: auto; }
 
     /* Sidebar Footer */
-    .sidebar-footer {
-      padding: 20px;
-      border-top: 1px solid var(--border);
-      background: var(--bg-light);
-    }
-
+    .sidebar-footer { padding: 20px; border-top: 1px solid var(--border); background: var(--bg-light); }
     .logout-btn {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      color: #00FF00;
-      background: rgba(0, 255, 0, 0.08);
+      display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-radius: 12px;
+      text-decoration: none; font-weight: 600; color: #00FF00; background: rgba(0, 255, 0, 0.08);
       transition: var(--transition);
     }
+    .logout-btn i { font-size: 18px; }
+    .logout-btn:hover { background: #ff4444; color: #ffffff; transform: translateY(-2px); }
 
-    .logout-btn i {
-      font-size: 18px;
+    /* ===== UNIQUE SECTION STYLES ===== */
+    .nav-section-container { margin-top: 20px; width: 100%; }
+
+    /* Section Headers */
+    .section-title {
+      font-size: 2rem; margin-bottom: 25px; color: var(--text); text-align: center;
+      border-bottom: 2px solid var(--secondary); padding-bottom: 10px; display: inline-block;
     }
 
-    .logout-btn:hover {
-      background: #ff4444;
-      color: #ffffff;
-      transform: translateY(-2px);
+    /* My Rides - Timeline Style */
+    .rides-timeline {
+      display: flex; flex-direction: column; gap: 20px; margin-top: 20px;
     }
+    .timeline-item {
+      display: flex; gap: 20px; background: var(--bg-light); padding: 20px;
+      border-radius: 16px; border: 1px solid var(--border); transition: var(--transition);
+    }
+    .timeline-item:hover { border-color: var(--secondary); transform: translateX(5px); }
+    .timeline-icon {
+      width: 50px; height: 50px; background: var(--secondary); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: #000000; font-size: 20px;
+      flex-shrink: 0;
+    }
+    .timeline-content { flex: 1; }
+    .timeline-content h3 { font-size: 1.2rem; margin-bottom: 5px; color: var(--text); }
+    .timeline-content p { color: var(--text-light); margin-bottom: 10px; }
+    .timeline-stats {
+      display: flex; gap: 20px; padding-top: 10px; border-top: 1px solid var(--border);
+    }
+    .timeline-stats span { display: flex; align-items: center; gap: 5px; font-size: 0.85rem; color: var(--secondary); }
 
-    /* Responsive */
-    @media (max-width: 1200px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .dashboard-grid { grid-template-columns: 1fr; }
-      .actions-grid { grid-template-columns: repeat(2, 1fr); }
+    /* Find Scooters - Map Card with Circular Progress */
+    .map-container {
+      background: var(--bg-light); border-radius: 24px; padding: 20px;
+      border: 1px solid var(--border); margin-bottom: 30px;
     }
-    
+    .map-frame {
+      width: 100%;
+      height: 250px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid var(--secondary);
+      margin-bottom: 20px;
+    }
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .location-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px;
+    }
+    .location-card {
+      background: var(--bg-light); border-radius: 16px; padding: 20px;
+      border: 1px solid var(--border); display: flex; align-items: center; gap: 15px;
+    }
+    .location-icon {
+      width: 60px; height: 60px; background: rgba(0,255,0,0.1); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .location-icon i { font-size: 24px; color: var(--secondary); }
+    .location-info h4 { font-size: 1.1rem; margin-bottom: 5px; }
+    .location-info p { color: var(--text-light); font-size: 0.85rem; }
+
+    /* Circular Progress */
+    .circular-progress-container {
+      display: flex; gap: 30px; justify-content: center; margin: 30px 0;
+    }
+    .circular-progress {
+      width: 120px; height: 120px; position: relative; text-align: center;
+    }
+    .circular-progress svg {
+      width: 120px; height: 120px; transform: rotate(-90deg);
+    }
+    .circular-progress circle {
+      fill: none; stroke-width: 8; stroke-linecap: round;
+    }
+    .circular-progress .bg-circle {
+      stroke: var(--border);
+    }
+    .circular-progress .progress-circle {
+      stroke: var(--secondary); stroke-dasharray: 314;
+      stroke-dashoffset: calc(314 - (314 * 75) / 100);
+      transition: stroke-dashoffset 0.5s;
+    }
+    .progress-value {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-size: 1.5rem; font-weight: 700; color: var(--secondary);
+    }
+    .progress-label { margin-top: 5px; font-size: 0.85rem; color: var(--text-light); }
+
+    /* Wallet - Cards and Transactions */
+    .balance-card {
+      background: linear-gradient(135deg, #00FF00, #00AA00); border-radius: 24px;
+      padding: 30px; color: #000000; margin-bottom: 30px;
+    }
+    .balance-card h3 { font-size: 1rem; opacity: 0.8; margin-bottom: 10px; }
+    .balance-amount { font-size: 3rem; font-weight: 700; margin-bottom: 5px; }
+    .balance-card small { opacity: 0.7; }
+    .transactions-list {
+      background: var(--bg-light); border-radius: 16px; padding: 20px; border: 1px solid var(--border);
+    }
+    .transaction-item {
+      display: flex; justify-content: space-between; align-items: center; padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .transaction-item:last-child { border-bottom: none; }
+    .transaction-info { display: flex; align-items: center; gap: 15px; }
+    .transaction-icon {
+      width: 40px; height: 40px; background: rgba(0,255,0,0.1); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .transaction-icon i { color: var(--secondary); font-size: 18px; }
+    .transaction-details h4 { font-size: 1rem; margin-bottom: 3px; }
+    .transaction-details p { font-size: 0.8rem; color: var(--text-light); }
+    .transaction-amount { font-weight: 700; color: var(--secondary); }
+
+    /* Support - Contact Cards */
+    .support-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;
+    }
+    .support-card {
+      background: var(--bg-light); border-radius: 20px; padding: 30px 20px;
+      text-align: center; border: 1px solid var(--border); transition: var(--transition);
+    }
+    .support-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
+    .support-icon {
+      width: 80px; height: 80px; background: rgba(0,255,0,0.1); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+    }
+    .support-icon i { font-size: 32px; color: var(--secondary); }
+    .support-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .support-card p { color: var(--text-light); margin-bottom: 15px; font-size: 0.9rem; }
+    .support-contact {
+      display: inline-block; padding: 8px 20px; background: var(--secondary);
+      color: #000000; text-decoration: none; border-radius: 30px; font-weight: 600;
+      transition: var(--transition);
+    }
+    .support-contact:hover { background: #00CC00; transform: scale(1.05); }
+
+    /* ===== IMPROVED MOBILE RESPONSIVENESS ===== */
     @media (max-width: 900px) {
-      .main-content { 
-        margin-left: 0; 
-        padding: 20px 15px; 
-      }
+      .main-content { margin-left: 0; padding: 20px 15px; }
       [dir="rtl"] .main-content { margin-right: 0; }
-      
-      /* Show mobile elements */
-      .mobile-menu-toggle { 
-        display: inline-flex; 
-        align-items: center; 
-        justify-content: center;
-      }
-      .mobile-header {
-        display: flex;
-      }
-      
-      /* Hide desktop header title, show mobile version */
-      .top-header .header-title h1,
-      .top-header .header-title p {
-        display: none;
-      }
-      
-      .top-header { 
-        flex-direction: column; 
-        align-items: flex-start; 
-        height: auto; 
-        gap: 12px;
-        margin-top: 0;
-      }
-      .header-controls { 
-        width: 100%; 
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .header-search { 
-        flex: 1; 
-        min-width: 180px;
-      }
-      .header-search input { 
-        width: 100%; 
-        padding: 8px 32px 8px 12px;
-        font-size: 0.85rem;
-      }
-      .header-search i {
-        right: 10px;
-        font-size: 13px;
-      }
+      .mobile-menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .mobile-header { display: flex; }
+      .top-header .header-title h1, .top-header .header-title p { display: none; }
+      .top-header { flex-direction: column; align-items: flex-start; height: auto; gap: 12px; margin-top: 0; }
+      .header-controls { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+      .header-search { flex: 1; min-width: 180px; }
+      .header-search input { width: 100%; padding: 8px 32px 8px 12px; font-size: 0.85rem; }
+      .header-search i { right: 10px; font-size: 13px; }
       [dir="rtl"] .header-search i { right: auto; left: 10px; }
+      .sidebar-header { padding-top: 25px; }
       
-      .sidebar-header {
-        padding-top: 25px;
+      /* Stack dashboard grid vertically on mobile */
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
+      
+      /* Make sure each card takes full width */
+      .recent-rides, .active-scooter {
+        width: 100%;
+      }
+      
+      .support-grid { grid-template-columns: 1fr; }
+      .location-grid { grid-template-columns: 1fr; }
     }
-    
+
     @media (max-width: 600px) {
       .stats-grid { grid-template-columns: 1fr; }
       .actions-grid { grid-template-columns: 1fr; }
-      .header-controls { 
-        flex-direction: column; 
-        align-items: stretch;
-      }
+      .header-controls { flex-direction: column; align-items: stretch; }
       .header-search { width: 100%; min-width: 100%; }
       .header-search input { width: 100%; }
       .history-table { font-size: 0.75rem; }
       .history-table th:nth-child(3), .history-table td:nth-child(3) { display: none; }
+      .header-controls .header-btn { width: 100%; border-radius: 30px; margin-top: 5px; height: 40px; }
+      .header-controls { gap: 5px; }
+      .timeline-item { flex-direction: column; align-items: flex-start; }
+      .circular-progress-container { flex-direction: column; align-items: center; }
+      .map-frame { height: 200px; }
       
-      .header-controls .header-btn {
-        width: 100%;
-        border-radius: 30px;
-        margin-top: 5px;
-        height: 40px;
+      /* Ensure active scooter card is visible and properly spaced */
+      .active-scooter {
+        margin-top: 0;
       }
-      
-      .header-controls {
-        gap: 5px;
+    }
+
+    /* Extra small devices */
+    @media (max-width: 380px) {
+      .ride-item {
+        flex-wrap: wrap;
+      }
+      .ride-status {
+        margin-left: auto;
+      }
+      .scooter-stats {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Sidebar Overlay -->
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <a href="index.html" class="logo">
         <i class="fas fa-bolt"></i>
-        <span class="logo-text">GrowScooter</span>
+        <span class="logo-text">SparkRide</span>
       </a>
     </div>
     <div class="user-info">
@@ -484,14 +528,11 @@
       </div>
     </div>
     <nav class="sidebar-nav">
-      <a href="#" class="nav-item active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-      <a href="#" class="nav-item"><i class="fas fa-bolt"></i><span>My Rides</span><span class="badge">12</span></a>
-      <a href="#" class="nav-item"><i class="fas fa-map-marker-alt"></i><span>Find Scooters</span></a>
-      <a href="#" class="nav-item"><i class="fas fa-wallet"></i><span>Wallet</span><span class="badge">$45</span></a>
-      <a href="#" class="nav-item"><i class="fas fa-history"></i><span>Ride History</span></a>
-      <a href="#" class="nav-item"><i class="fas fa-ticket-alt"></i><span>My Bookings</span></a>
-      <a href="#" class="nav-item"><i class="fas fa-cog"></i><span>Settings</span></a>
-      <a href="#" class="nav-item"><i class="fas fa-headset"></i><span>Support</span></a>
+      <a href="#" class="nav-item active" data-section="dashboard"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="#" class="nav-item" data-section="myRides"><i class="fas fa-bolt"></i><span>My Rides</span><span class="badge">12</span></a>
+      <a href="#" class="nav-item" data-section="findScooters"><i class="fas fa-map-marker-alt"></i><span>Find Scooters</span></a>
+      <a href="#" class="nav-item" data-section="wallet"><i class="fas fa-wallet"></i><span>Wallet</span><span class="badge">$45</span></a>
+      <a href="#" class="nav-item" data-section="support"><i class="fas fa-headset"></i><span>Support</span></a>
     </nav>
     <div class="sidebar-footer">
       <a href="index.html" class="logout-btn">
@@ -502,7 +543,6 @@
   </aside>
 
   <main class="main-content">
-    <!-- Mobile Header with Hamburger and Title - Scrolls with page -->
     <div class="mobile-header">
       <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
       <span class="page-title">User Dashboard</span>
@@ -523,107 +563,243 @@
       </div>
     </div>
 
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-bolt"></i></div>
-        <h3>Total Rides</h3>
-        <div class="stat-number">47</div>
-        <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+12%</span></div>
+    <!-- Dashboard Section (Default) -->
+    <div id="dashboardSection">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Total Rides</h3>
+          <div class="stat-number">47</div>
+          <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+12%</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-clock"></i></div>
+          <h3>Ride Time</h3>
+          <div class="stat-number">28.5h</div>
+          <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+5%</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-road"></i></div>
+          <h3>Distance</h3>
+          <div class="stat-number">342 km</div>
+          <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+18%</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-leaf"></i></div>
+          <h3>CO₂ Saved</h3>
+          <div class="stat-number">68 kg</div>
+          <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+25%</span></div>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-clock"></i></div>
-        <h3>Ride Time</h3>
-        <div class="stat-number">28.5h</div>
-        <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+5%</span></div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-road"></i></div>
-        <h3>Distance</h3>
-        <div class="stat-number">342 km</div>
-        <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+18%</span></div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-leaf"></i></div>
-        <h3>CO₂ Saved</h3>
-        <div class="stat-number">68 kg</div>
-        <div class="stat-trend"><i class="fas fa-arrow-up trend-up"></i><span class="trend-up">+25%</span></div>
-      </div>
-    </div>
 
-    <div class="dashboard-grid">
-      <div class="recent-rides">
+      <div class="dashboard-grid">
+        <div class="recent-rides">
+          <div class="section-header">
+            <h2>Recent Rides</h2>
+            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="ride-item">
+            <div class="ride-icon"><i class="fas fa-bolt"></i></div>
+            <div class="ride-details">
+              <h4>Urban Cruiser</h4>
+              <p><i class="fas fa-map-marker-alt"></i> Downtown · 3.5 km</p>
+            </div>
+            <div class="ride-status status-completed">Completed</div>
+          </div>
+          <div class="ride-item">
+            <div class="ride-icon"><i class="fas fa-bolt"></i></div>
+            <div class="ride-details">
+              <h4>Sport Pro</h4>
+              <p><i class="fas fa-map-marker-alt"></i> Beach Route · 5.2 km</p>
+            </div>
+            <div class="ride-status status-completed">Completed</div>
+          </div>
+          <div class="ride-item">
+            <div class="ride-icon"><i class="fas fa-bolt"></i></div>
+            <div class="ride-details">
+              <h4>Eco Rider</h4>
+              <p><i class="fas fa-map-marker-alt"></i> Central Park · 2.8 km</p>
+            </div>
+            <div class="ride-status status-upcoming">Upcoming</div>
+          </div>
+        </div>
+
+        <div class="active-scooter">
+          <div class="scooter-title"><i class="fas fa-bolt"></i> Active Scooter</div>
+          <h3 class="scooter-model">Sport Pro</h3>
+          <div class="scooter-plate">SPT-2026</div>
+          <div class="battery-level">
+            <div class="battery-info"><span>Battery Level</span><span>75%</span></div>
+            <div class="battery-bar"><div class="battery-fill" style="width: 75%"></div></div>
+          </div>
+          <div class="scooter-stats">
+            <div class="scooter-stat"><i class="fas fa-tachometer-alt"></i><strong>35 km/h</strong><span>Top Speed</span></div>
+            <div class="scooter-stat"><i class="fas fa-battery-full"></i><strong>45 km</strong><span>Range Left</span></div>
+          </div>
+          <button class="action-btn"><i class="fas fa-play"></i><span>Start Ride</span></button>
+        </div>
+      </div>
+
+      <div class="quick-actions">
+        <div class="section-header"><h2>Quick Actions</h2></div>
+        <div class="actions-grid">
+          <div class="action-card"><i class="fas fa-bolt"></i><h4>Book a Ride</h4><p>Find nearest scooter</p></div>
+          <div class="action-card"><i class="fas fa-wallet"></i><h4>Add Funds</h4><p>Top up your wallet</p></div>
+          <div class="action-card"><i class="fas fa-ticket-alt"></i><h4>My Bookings</h4><p>View upcoming rides</p></div>
+          <div class="action-card"><i class="fas fa-headset"></i><h4>Support</h4><p>Get help 24/7</p></div>
+        </div>
+      </div>
+
+      <div class="ride-history">
         <div class="section-header">
-          <h2>Recent Rides</h2>
+          <h2>Ride History</h2>
           <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="ride-item">
-          <div class="ride-icon"><i class="fas fa-bolt"></i></div>
-          <div class="ride-details">
-            <h4>Urban Cruiser</h4>
-            <p><i class="fas fa-map-marker-alt"></i> Downtown · 3.5 km</p>
-          </div>
-          <div class="ride-status status-completed">Completed</div>
-        </div>
-        <div class="ride-item">
-          <div class="ride-icon"><i class="fas fa-bolt"></i></div>
-          <div class="ride-details">
-            <h4>Sport Pro</h4>
-            <p><i class="fas fa-map-marker-alt"></i> Beach Route · 5.2 km</p>
-          </div>
-          <div class="ride-status status-completed">Completed</div>
-        </div>
-        <div class="ride-item">
-          <div class="ride-icon"><i class="fas fa-bolt"></i></div>
-          <div class="ride-details">
-            <h4>Eco Rider</h4>
-            <p><i class="fas fa-map-marker-alt"></i> Central Park · 2.8 km</p>
-          </div>
-          <div class="ride-status status-upcoming">Upcoming</div>
-        </div>
-      </div>
-
-      <div class="active-scooter">
-        <div class="scooter-title"><i class="fas fa-bolt"></i> Active Scooter</div>
-        <h3 class="scooter-model">Sport Pro</h3>
-        <div class="scooter-plate">SPT-2026</div>
-        <div class="battery-level">
-          <div class="battery-info"><span>Battery Level</span><span>75%</span></div>
-          <div class="battery-bar"><div class="battery-fill" style="width: 75%"></div></div>
-        </div>
-        <div class="scooter-stats">
-          <div class="scooter-stat"><i class="fas fa-tachometer-alt"></i><strong>35 km/h</strong><span>Top Speed</span></div>
-          <div class="scooter-stat"><i class="fas fa-battery-full"></i><strong>45 km</strong><span>Range Left</span></div>
-        </div>
-        <button class="action-btn"><i class="fas fa-play"></i><span>Start Ride</span></button>
+        <table class="history-table">
+          <thead>
+            <tr><th>Date</th><th>Scooter</th><th>Duration</th><th>Distance</th><th>Cost</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Mar 1, 2026</td><td class="ride-type"><i class="fas fa-bolt"></i> Urban Cruiser</td><td>25 min</td><td>3.5 km</td><td>$4.50</td><td><span class="ride-status status-completed">Completed</span></td></tr>
+            <tr><td>Feb 28, 2026</td><td class="ride-type"><i class="fas fa-bolt"></i> Sport Pro</td><td>35 min</td><td>5.2 km</td><td>$6.75</td><td><span class="ride-status status-completed">Completed</span></td></tr>
+            <tr><td>Feb 27, 2026</td><td class="ride-type"><i class="fas fa-bolt"></i> Eco Rider</td><td>18 min</td><td>2.8 km</td><td>$3.25</td><td><span class="ride-status status-completed">Completed</span></td></tr>
+            <tr><td>Feb 26, 2026</td><td class="ride-type"><i class="fas fa-bolt"></i> Sport Pro</td><td>42 min</td><td>6.1 km</td><td>$7.80</td><td><span class="ride-status status-completed">Completed</span></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <div class="quick-actions">
-      <div class="section-header"><h2>Quick Actions</h2></div>
-      <div class="actions-grid">
-        <div class="action-card"><i class="fas fa-bolt"></i><h4>Book a Ride</h4><p>Find nearest scooter</p></div>
-        <div class="action-card"><i class="fas fa-wallet"></i><h4>Add Funds</h4><p>Top up your wallet</p></div>
-        <div class="action-card"><i class="fas fa-ticket-alt"></i><h4>My Bookings</h4><p>View upcoming rides</p></div>
-        <div class="action-card"><i class="fas fa-headset"></i><h4>Support</h4><p>Get help 24/7</p></div>
+    <!-- My Rides Section - Timeline Style -->
+    <div id="myRidesSection" class="nav-section-container" style="display: none;">
+      <h2 class="section-title">My Rides Timeline</h2>
+      <div class="rides-timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-bolt"></i></div>
+          <div class="timeline-content">
+            <h3>Urban Cruiser · Downtown</h3>
+            <p><i class="fas fa-calendar"></i> Mar 1, 2026 · 3.5 km · 25 min</p>
+            <div class="timeline-stats">
+              <span><i class="fas fa-bolt"></i> 12 Wh</span>
+              <span><i class="fas fa-leaf"></i> 0.8 kg CO₂</span>
+              <span><i class="fas fa-star" style="color: #FFD700;"></i> 5.0</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-bolt"></i></div>
+          <div class="timeline-content">
+            <h3>Sport Pro · Beach Route</h3>
+            <p><i class="fas fa-calendar"></i> Feb 28, 2026 · 5.2 km · 35 min</p>
+            <div class="timeline-stats">
+              <span><i class="fas fa-bolt"></i> 18 Wh</span>
+              <span><i class="fas fa-leaf"></i> 1.2 kg CO₂</span>
+              <span><i class="fas fa-star" style="color: #FFD700;"></i> 4.8</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="ride-history">
-      <div class="section-header">
-        <h2>Ride History</h2>
-        <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+    <!-- Find Scooters Section - Map with Circular Progress -->
+    <div id="findScootersSection" class="nav-section-container" style="display: none;">
+      <h2 class="section-title">Find Scooters Near You</h2>
+      <div class="map-container">
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086567878123!2d-122.419418384681!3d37.774929279759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064f0e4b7b7%3A0x6b9c8b3d3e8b9c!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="circular-progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 120 120">
+              <circle class="bg-circle" cx="60" cy="60" r="50"></circle>
+              <circle class="progress-circle" cx="60" cy="60" r="50" style="stroke-dashoffset: 78.5;"></circle>
+            </svg>
+            <div class="progress-value">8</div>
+            
+          </div>
+          <div class="circular-progress">
+            <svg viewBox="0 0 120 120">
+              <circle class="bg-circle" cx="60" cy="60" r="50"></circle>
+              <circle class="progress-circle" cx="60" cy="60" r="50" style="stroke-dashoffset: 157;"></circle>
+            </svg>
+            <div class="progress-value">500m</div>
+            
+          </div>
+        </div>
+        <div class="location-grid">
+          <div class="location-card">
+            <div class="location-icon"><i class="fas fa-map-pin"></i></div>
+            <div class="location-info">
+              <h4>Downtown Hub</h4>
+              <p>3 scooters · 200m away</p>
+            </div>
+          </div>
+          <div class="location-card">
+            <div class="location-icon"><i class="fas fa-map-pin"></i></div>
+            <div class="location-info">
+              <h4>Central Park</h4>
+              <p>2 scooters · 350m away</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <table class="history-table">
-        <thead>
-          <tr><th>Date</th><th>Scooter</th><th>Duration</th><th>Distance</th><th>Cost</th><th>Status</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Mar 1, 2026</td><td class="ride-type"><i class="fas fa-bolt"></i> Urban Cruiser</td><td>25 min</td><td>3.5 km</td><td>$4.50</td><td><span class="ride-status status-completed">Completed</span></td></tr>
-          <tr><td>Feb 28, 2026</td><td class="ride-type"><i class="fas fa-bolt"></i> Sport Pro</td><td>35 min</td><td>5.2 km</td><td>$6.75</td><td><span class="ride-status status-completed">Completed</span></td></tr>
-          <tr><td>Feb 27, 2026</td><td class="ride-type"><i class="fas fa-bolt"></i> Eco Rider</td><td>18 min</td><td>2.8 km</td><td>$3.25</td><td><span class="ride-status status-completed">Completed</span></td></tr>
-          <tr><td>Feb 26, 2026</td><td class="ride-type"><i class="fas fa-bolt"></i> Sport Pro</td><td>42 min</td><td>6.1 km</td><td>$7.80</td><td><span class="ride-status status-completed">Completed</span></td></tr>
-        </tbody>
-      </table>
+    </div>
+
+    <!-- Wallet Section - Balance Card + Transactions -->
+    <div id="walletSection" class="nav-section-container" style="display: none;">
+      <h2 class="section-title">My Wallet</h2>
+      <div class="balance-card">
+        <h3>Current Balance</h3>
+        <div class="balance-amount">$45.00</div>
+        <small>Valid until 12/2026</small>
+      </div>
+      <div class="transactions-list">
+        <h3 style="margin-bottom: 20px;">Recent Transactions</h3>
+        <div class="transaction-item">
+          <div class="transaction-info">
+            <div class="transaction-icon"><i class="fas fa-bolt"></i></div>
+            <div class="transaction-details">
+              <h4>Ride Payment</h4>
+              <p>Urban Cruiser · Mar 1, 2026</p>
+            </div>
+          </div>
+          <div class="transaction-amount">-$4.50</div>
+        </div>
+        <div class="transaction-item">
+          <div class="transaction-info">
+            <div class="transaction-icon"><i class="fas fa-plus"></i></div>
+            <div class="transaction-details">
+              <h4>Added Funds</h4>
+              <p>Credit Card · Feb 28, 2026</p>
+            </div>
+          </div>
+          <div class="transaction-amount" style="color: var(--secondary);">+$20.00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Support Section - Contact Cards -->
+    <div id="supportSection" class="nav-section-container" style="display: none;">
+      <h2 class="section-title">24/7 Support</h2>
+      <div class="support-grid">
+        <div class="support-card">
+          <div class="support-icon"><i class="fas fa-comment"></i></div>
+          <h3>Live Chat</h3>
+          <p>Instant response from our team</p>
+          <a href="#" class="support-contact">Start Chat</a>
+        </div>
+        <div class="support-card">
+          <div class="support-icon"><i class="fas fa-envelope"></i></div>
+          <h3>Email Us</h3>
+          <p>support@SparkRide.com</p>
+          <a href="#" class="support-contact">Send Email</a>
+        </div>
+        <div class="support-card">
+          <div class="support-icon"><i class="fas fa-phone"></i></div>
+          <h3>Phone Support</h3>
+          <p>1-800-GROW-SCOOT</p>
+          <a href="#" class="support-contact">Call Now</a>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -637,47 +813,64 @@
       function toggleSidebar() {
         sidebar.classList.toggle('active');
         overlay.classList.toggle('active');
-        
-        // Prevent body scrolling when menu is open, but allow sidebar to scroll
         if (sidebar.classList.contains('active')) {
           body.classList.add('menu-open');
-          // Reset sidebar scroll position to top when opening
           sidebar.scrollTop = 0;
         } else {
           body.classList.remove('menu-open');
         }
-        
         mobileToggle.innerHTML = sidebar.classList.contains('active') ? 
           '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
       }
 
       if (mobileToggle && sidebar && overlay) {
-        mobileToggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          toggleSidebar();
-        });
-
-        overlay.addEventListener('click', function() {
-          toggleSidebar();
-        });
-
-        // Close sidebar when clicking a nav link (optional)
+        mobileToggle.addEventListener('click', (e) => { e.preventDefault(); toggleSidebar(); });
+        overlay.addEventListener('click', toggleSidebar);
         document.querySelectorAll('.sidebar-nav a').forEach(link => {
-          link.addEventListener('click', function() {
-            if (window.innerWidth <= 900) {
-              toggleSidebar();
-            }
-          });
+          link.addEventListener('click', () => { if (window.innerWidth <= 900) toggleSidebar(); });
         });
-
-        // Close sidebar with Escape key
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && sidebar.classList.contains('active')) {
-            toggleSidebar();
-          }
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && sidebar.classList.contains('active')) toggleSidebar();
         });
       }
+
+      // Section Switching
+      const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+      const sections = {
+        dashboard: 'dashboardSection',
+        myRides: 'myRidesSection',
+        findScooters: 'findScootersSection',
+        wallet: 'walletSection',
+        support: 'supportSection'
+      };
+
+      function hideAllSections() {
+        Object.values(sections).forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.style.display = 'none';
+        });
+      }
+
+      function showSection(sectionId) {
+        hideAllSections();
+        const el = document.getElementById(sectionId);
+        if (el) el.style.display = 'block';
+      }
+
+      navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          navItems.forEach(nav => nav.classList.remove('active'));
+          item.classList.add('active');
+          const section = item.dataset.section;
+          if (section && sections[section]) {
+            showSection(sections[section]);
+          }
+        });
+      });
+
+      // Initially show dashboard
+      showSection('dashboardSection');
 
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
@@ -697,7 +890,6 @@
       document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
       document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
 
-      // Load saved preferences
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
         const themeIcon = document.querySelector('#themeToggle i');
@@ -707,8 +899,7 @@
         document.documentElement.setAttribute('dir', 'rtl');
       }
 
-      // Handle window resize
-      window.addEventListener('resize', function() {
+      window.addEventListener('resize', () => {
         if (window.innerWidth > 900 && sidebar) {
           sidebar.classList.remove('active');
           overlay.classList.remove('active');
@@ -717,12 +908,8 @@
         }
       });
 
-      // Demo alerts
-      document.querySelectorAll('.action-card, .action-btn, .view-all').forEach(el => {
-        el.addEventListener('click', (e) => { 
-          e.preventDefault(); 
-          alert('Demo version'); 
-        });
+      document.querySelectorAll('.action-card, .action-btn, .view-all, .support-contact').forEach(el => {
+        el.addEventListener('click', (e) => { e.preventDefault(); alert('Demo version'); });
       });
     })();
   </script>
